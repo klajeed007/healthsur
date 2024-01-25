@@ -360,11 +360,11 @@ def conview(request):
 	sresult_list = ['พึงพอใจน้อยที่สุด','พึงพอใจน้อย','พึงพอใจปานกลาง','พึงพอใจมาก','พึงพอใจมากที่สุด'
 	]
 
-	rs1 = results1/5
-	rs2 = results2/5
-	rs3 = results3/5
-	rs4 = results4/5
-	rs5 = results5/5
+	rs1 = results1
+	rs2 = results2
+	rs3 = results3
+	rs4 = results4
+	rs5 = results5
 
 
 
