@@ -1,0 +1,190 @@
+ {% extends 'home/base.html' %}
+ {% load static %}
+
+    {% block content %}
+    {% if status %} 
+        {% if status == 'success' %} 
+            <h2>คะแนน<u>ก่อน</u>เข้าร่วมกิจกรรมของคุณคือ </h2><br><h1 style="color:seagreen;">{{result}}/10</h1><br>
+
+        {% endif %}
+    {% endif %}
+
+<p class="fs-5 text-body-secondary">แบบประเมินความรอบรู้สำหรับกลุ่มเสี่ยงโรคเบาหวาน (<u>ก่อน</u>ร่วมกิจกรรม) <br> </p>
+  
+  
+    <div class="container">
+
+        <form method="POST">
+
+          {% csrf_token %}
+
+          <div class="form-group">
+            <br>
+            <label for="name" > ชื่อ - นามสกุล     </label>
+            <input type="text" name="uname" id="uname" required> </input><br>
+            <br>
+
+            <label for="bq1" > 1. โรคเบาหวาน หมายถึงข้อใด </label>
+          
+            <select class="form-select" name="bq1" id="bq1" required>
+              <option disabled="true" value="" selected >--กรุณาเลือกคำตอบ--</option>
+              <option value =0>โรคที่มีระดับน้ำตาลต่ำ</option>
+              <option value =1>โรคที่มีระดับน้ำตาลในเลือดสูง</option>
+              <option value =0>เป็นโรคที่รักษาหายขาด</option>
+              <option value =0>ไม่มีภาวะแทรกซ้อน</option>
+            </select>
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <label for="bq2"> 2. ฮอร์โมนอินซูลินมีความสำคัญอย่างไร </label>
+          
+            <select class="form-select" name="bq2" id="bq2" required>
+              <option disabled="true" value="" selected >--กรุณาเลือกคำตอบ--</option>
+              <option value =0>ช่วยเผาผลาญอาหารเฉพาะแป้งและน้ำตาล</option>
+              <option value =0>ช่วยเพิ่มระดับน้ำตาลในกระแสเลือด</option>
+              <option value =0>ช่วยระดับน้ำตาลในกระแสเลือด</option>
+              <option value =1>ช่วยให้ร่างกายสามารถนำน้ำตาลกลูโคสไปใช้เป็นพลังงาน</option>
+            </select>
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <label for="bq3"> 3. บุคคลใดที่มีอาการของโรคเบาหวาน
+
+ </label>
+          
+            <select class="form-select" name="bq3" id="bq3" required>
+              <option disabled="true" value="" selected >--กรุณาเลือกคำตอบ--</option>
+              <option value =1>นายสมชาย มักลุกมาปัสสาวะบ่อยวันละ 8-10 ครั้ง</option>
+              <option value =0>นางสมศรีมีน้ำหนักเพิ่มขึ้น</option>
+              <option value =0>นางสมพร เบื่ออาหาร กินได้น้อย</option>
+              <option value =0>นายสมศักดิ์ เหงื่อออกมากเวลานอนตอนกลางคืน</option>
+            </select>
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <label for="bq4"> 4. บุคคลใดที่เสี่ยงต่อการเป็นโรคเบาหวาน
+
+ </label>
+          
+            <select class="form-select" name="bq4" id="bq4" required>
+             <option disabled="true" value="" selected >--กรุณาเลือกคำตอบ--</option>
+              <option value =0>นายนพ นอนวันละ 4 ชั่วโมง/วัน</option>
+              <option value =0>นายกอบ รับประทานอาหารไม่ตรงเวลา</option>
+              <option value =0>นางน้อย มีความวิตกกังวลและเครียดง่าย</option>
+              <option value =1>นางพร ไม่เคยออกกำลังกาย</option>
+            </select>
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <label for="bq5"> 5. บุคคลที่ดื่มเครื่องดื่มชนิดใดมีความเสี่ยงเป็นโรคเบาหวานได้มากที่สุด </label>
+          
+            <select class="form-select"  name="bq5" id="bq5" required>
+              <option disabled="true" selected value="" >--กรุณาเลือกคำตอบ--</option>
+              <option value =0>ไม่มี</option>
+              <option value =1>น.ส.ชมพู่ ดื่มชานมไข่มุกวันละ 1 แก้ว</option>
+              <option value =0>นายชื่น ดื่มสปอนเซอร์วันละ 2 ขวด</option>
+              <option value =0>นายพงษ์ ดื่มกาแฟดำวันละ 3 แก้ว</option>
+              <option value =0>นางน้อม ดื่มนมพร่องมันเนยวันละ 1 กล่อง</option>
+            </select>
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <label for="bq6"> 6. อาหารใดที่ให้พลังงานมากที่สุดในปริมาณที่เท่ากัน </label>
+          
+            <select class="form-select" value="" name="bq6" id="bq6">
+              <option disabled="true" selected >--กรุณาเลือกคำตอบ--</option>
+              <option value =1>หมูสามชั้นทอด 2 กรัม</option>
+              <option value =0>อกไก่ต้ม 2 กรัม</option>
+              <option value =0>ข้าวโพดต้ม 2 กรัม</option>
+              <option value =0>เงาะ 2 กรัม</option>
+            </select>
+          </div>
+
+
+          <br>
+
+          <div class="form-group">
+            <label for="bq7"> 7. อาหารชนิดใดที่สามารถรับประทานได้ ไม่ จำกัดปริมาณ </label>
+          
+            <select class="form-select" value="" name="bq7" id="bq7">
+              <option disabled="true" selected >--กรุณาเลือกคำตอบ--</option>
+              <option value =0>ลอดช่องน้ำกะทิ</option>
+              <option value =1>คะน้า</option>
+              <option value =0>มันต้ม</option>
+              <option value =0>ข้าว</option>
+            </select>
+          </div>
+
+
+          <br>
+
+          <div class="form-group">
+            <label for="bq8"> 8. เมื่อเป็นเบาหวานท่านควรควบคุมอาหารในหมวดใดมากที่สุด </label>
+          
+            <select class="form-select" value="" name="bq8" id="bq8">
+              <option disabled="true" selected >--กรุณาเลือกคำตอบ--</option>
+              <option value =1>คาร์โบไฮเดรต</option>
+              <option value =0>โปรตีน</option>
+              <option value =0>เกลือแร่</option>
+              <option value =0>วิตามิน</option>
+            </select>
+          </div>
+
+
+          <br>
+
+          <div class="form-group">
+            <label for="bq9"> 9. การออกกำลังกายเป็นประจำช่วยป้องกันการเป็นโรคเบาหวานได้หรือไม่อย่างไร </label>
+          
+            <select class="form-select" value="" name="bq9" id="bq9">
+              <option disabled="true" selected >--กรุณาเลือกคำตอบ--</option>
+              <option value =0>ได้ เพราะช่วยให้ตับอ่อนผลิตอินซูลินได้</option>
+              <option value =0>ไม่ได้ เพราะจะทำให้ร่างกายสูญเสียพลังงานมากเกินไป</option>
+              <option value =1>ได้ เพราะทำให้ร่ากายใช้น้ำตาลเผาผลาญเป็นพลังงานได้ดีขึ้น</option>
+              <option value =0>ไม่ได้ เพราะจะทำให้เหนื่อยและรับประทานอาหารมากขึ้นกว่าเดิม</option>
+            </select>
+          </div>
+
+
+          <br>
+
+          <div class="form-group">
+            <label for="bq10"> 10. บุคคลใดทำกิจกรรมที่เป็นการออกกำลังกาย </label>
+          
+            <select class="form-select" value="" name="bq10" id="bq10">
+              <option disabled="true" selected >--กรุณาเลือกคำตอบ--</option>
+              <option value =0>นางสาวต้อย ซ้อมปิงปองให้น้องสาว 20 นาที สัปดาห์ละ 1 วัน</option>
+              <option value =0>นางสาวติ๊ก วิ่งเหยาะๆกับเพื่อน 20 นาที สัปดาห์ละ 2 วัน</option>
+              <option value =0>นายต่อ เล่นบาสเก็ตบอล วันละ 30 นาที 1วัน/สัปดาห์</option>
+              <option value =1>นายโต้ง เล่นแบดมินตัน วันละ 30 นาที 3-5วัน/สัปดาห์</option>
+            </select>
+          </div>
+
+          <br>
+          <script src="{% static 'myfirst2.js' %}"></script>
+
+          <button type="submit" class="btn btn-bd-primary" onclick="myFunction()">ส่งแบบประเมิน</button>
+        </form>
+    </div>
+<br><br>
+
+<h6>สุพัตรา เชาว์ไวย, นงพิมล นิมิตอานันท์ และศศิธร รุจนเวช. <br>
+  (2562). ผลของโปรแกรมการสร้างเสริมความรอบรู้ด้านสุขภาพในผู้ป่วย<br>
+  โรคเบาหวานชนิดที่ 2 รายใหม่ในชุมชน.วารสารโรงพยาบาลชลบุรี, 44(1), 25-34.<br><br>
+อัจฉรา จิตรใจเย็น, ศศิธร รุจนเวช และนงพิมล นิมิตรอานันท์. <br>
+(2564).ผลของโปรแกรมการส่งเสริมความรอบรู้ด้านสุขภาพต่อความรอบรู้ด้านสุขภาพ<br>
+และพฤติกรรมการป้องกันโรคของกลุ่มเสี่ยงโรคเบาหวานชนิดที่ 2 ในชุมชนแห่งหนึ่ง<br> 
+จังหวัดสมุทรสาคร. วารสารพยาบาลทหารบก, 22(1), 321-330.</h6>
+    {% endblock content %}
+
+

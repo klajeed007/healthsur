@@ -1,0 +1,136 @@
+ {% extends 'home/base.html' %}
+ {% load static %}
+
+    {% block content %}
+    {% if status %} 
+        {% if status == 'success' %} 
+            <h2>อาการเตือนของโรคเบาหวาน </h2><br><h1 style="color:seagreen;"> คุณมีอาการเตือนของโรคเบาหวาน {{result}} ใน 8 อาการ</h1><br>
+
+        {% endif %}
+    {% endif %}
+
+<p class="fs-5 text-body-secondary">แบบประเมินอาการเตือนโรคเบาหวาน 8 ข้อ<br> </p>
+  
+  
+    <div class="container">
+
+        <form method="POST">
+
+          {% csrf_token %}
+
+          <div class="form-group">
+            <br>
+            <label for="name" > ชื่อ - นามสกุล     </label>
+            <input type="text" name="uname" id="uname" required> </input><br>
+            <br>
+            <label for="urine" > 1. ปัสสาวะบ่อย </label>
+          
+            <select class="form-select" name="urine" id="urine" required>
+              <option disabled="true" value="" selected >--กรุณาเลือกคำตอบ--</option>
+              <option value =1>ใช่</option>
+              <option value =0>ไม่ใช่</option>
+
+            </select>
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <label for="tried"> 2. เหนื่อยล้ามาก </label>
+          
+            <select class="form-select" name="tried" id="tried" required>
+              <option disabled="true" value="" selected >--กรุณาเลือกคำตอบ--</option>
+              <option value =1>ใช่</option>
+              <option value =0>ไม่ใช่</option>
+            </select>
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <label for="eat"> 3. กินจุแต่น้ำหนักลด </label>
+          
+            <select class="form-select" name="eat" id="eat" required>
+              <option disabled="true" value="" selected >--กรุณาเลือกคำตอบ--</option>
+              <option value =1>ใช่</option>
+              <option value =0>ไม่ใช่</option>
+            </select>
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <label for="wound"> 4. บาดแผล/รอยฟกช้ำที่หายช้า </label>
+          
+            <select class="form-select" name="wound" id="wound" required>
+             <option disabled="true" value="" selected >--กรุณาเลือกคำตอบ--</option>
+              <option value =1>ใช่</option>
+              <option value =0>ไม่ใช่</option>
+            </select>
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <label for="eye"> 5. ตาพร่ามัว </label>
+          
+            <select class="form-select"  name="eye" id="eye" required>
+              <option disabled="true" selected value="" >--กรุณาเลือกคำตอบ--</option>
+              <option value =1>ใช่</option>
+              <option value =0>ไม่ใช่</option>
+            </select>
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <label for="dehy"> 6. รู้สึกกระหายน้ำมาก </label>
+          
+            <select class="form-select" value="" name="dehy" id="dehy">
+              <option disabled="true" selected >--กรุณาเลือกคำตอบ--</option>
+              <option value =1>ใช่</option>
+              <option value =0>ไม่ใช่</option>
+            </select>
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <label for="hungry"> 7. รู้สึกหิวบ่อย </label>
+          
+            <select class="form-select" value="" name="hungry" id="hungry">
+              <option disabled="true" selected >--กรุณาเลือกคำตอบ--</option>
+              <option value =1>ใช่</option>
+              <option value =0>ไม่ใช่</option>
+            </select>
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <label for="pain"> 8. รู้สึกเสียวซ่า ปวดหรือชาที่มือ/เท้า </label>
+          
+            <select class="form-select" value="" name="pain" id="pain">
+              <option disabled="true" selected >--กรุณาเลือกคำตอบ--</option>
+              <option value =1>ใช่</option>
+              <option value =0>ไม่ใช่</option>
+            </select>
+          </div>
+
+
+
+
+          <br>
+          <script src="{% static 'myfirst2.js' %}"></script>
+
+          <button type="submit" class="btn btn-bd-primary" onclick="myFunction()">ส่งแบบประเมิน</button>
+        </form>
+         <br> <br> 
+<h7>American Diabetes association. (2023, December 2). Prediabetes.</h7>
+<br>
+<h7>        https://diabetes.org/about-diabetes/prediabetes</h7>
+    </div>
+
+    {% endblock content %}
+
+

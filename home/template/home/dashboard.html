@@ -1,0 +1,498 @@
+ {% extends 'home/base.html' %}
+ {% load static %}
+    {% block content %}
+
+   <!DOCTYPE html>
+
+<h2 align="center"> กราฟแสดงความเสี่ยงการเกิดโรคเบาหวาน </h2>
+<div>
+  <canvas id="myChart" width="100" height="100" style="border:1px solid #552211;" ></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.min.js"></script>
+
+<script>
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: [{% for list in result_list %} '{{ list }}', {% endfor %}],
+      //labels: ['ระดับความเสี่ยงน้อย','ระดับความเสี่ยงน้อย-ปานกลาง','ระดับความเสี่ยงปานกลาง','ระดับความเสี่ยงสูง','ระดับความเสี่ยงสูงมาก'],
+      datasets: [{
+        label: 'จำนวน',
+        //data: [12, 19, 3, 5, 10],
+        
+       //labels: ['ระดับความเสี่ยงน้อย','ระดับความเสี่ยงน้อย-ปานกลาง','ระดับความเสี่ยงปานกลาง','ระดับความเสี่ยงสูง','ระดับความเสี่ยงสูงมาก'],
+           // datasets: [{
+              //  label:'result',
+                data: [{% for number in result_number %} '{{ number }}', {% endfor %}],
+
+        borderWidth: 2
+
+
+        ,
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)',
+      'rgb(1, 100, 100)',
+      'rgb(120, 100, 86)'
+    ],
+    hoverOffset: 4
+      }]
+    },
+    
+  });
+
+
+</script>
+
+
+
+
+
+
+
+<br><br>
+
+<h2 align="center"> กราฟแสดงอาการเตือนโรคเบาหวาน 8 ข้อ </h2>
+<div>
+  <canvas id="myChart1" width="100" height="100" style="border:1px solid #552211;" ></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.min.js"></script>
+
+<script>
+  var ctx = document.getElementById('myChart1').getContext('2d');
+  var myChart1 = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: [{% for list in alertresult_list %} '{{ list }}', {% endfor %}],
+      //labels: ['ระดับความเสี่ยงน้อย','ระดับความเสี่ยงน้อย-ปานกลาง','ระดับความเสี่ยงปานกลาง','ระดับความเสี่ยงสูง','ระดับความเสี่ยงสูงมาก'],
+      datasets: [{
+        label: 'จำนวน',
+        //data: [12, 19, 3, 5, 10],
+        
+       //labels: ['ระดับความเสี่ยงน้อย','ระดับความเสี่ยงน้อย-ปานกลาง','ระดับความเสี่ยงปานกลาง','ระดับความเสี่ยงสูง','ระดับความเสี่ยงสูงมาก'],
+           // datasets: [{
+              //  label:'result',
+                data: [{% for number in alertresult_number %} '{{ number }}', {% endfor %}],
+
+        borderWidth: 2
+
+
+        ,
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)',
+      'rgb(1, 100, 100)',
+      'rgb(120, 100, 86)',
+      'rgb(0, 0, 5)',
+      'rgb(150, 205, 86)',
+      'rgb(255, 100, 100)',
+      'rgb(120, 255, 86)',
+      'rgb(0, 100, 86)'
+    ],
+    hoverOffset: 4
+      }]
+    },
+    
+  });
+
+
+
+</script>
+
+
+
+
+
+
+<br><br>
+
+<h2 align="center"> กราฟแสดงความรอบรู้ขั้นพื้นฐานสำหรับกลุ่มเสี่ยงโรคเบาหวาน <br>(ก่อนได้รับความรู้) </h2>
+<div>
+  <canvas id="myChart2" width="100" height="100" style="border:1px solid #552211;" ></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.min.js"></script>
+
+<script>
+  var ctx = document.getElementById('myChart2').getContext('2d');
+  var myChart2 = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: [{% for list in bresult_list %} '{{ list }}', {% endfor %}],
+      //labels: ['ระดับความเสี่ยงน้อย','ระดับความเสี่ยงน้อย-ปานกลาง','ระดับความเสี่ยงปานกลาง','ระดับความเสี่ยงสูง','ระดับความเสี่ยงสูงมาก'],
+      datasets: [{
+        label: 'จำนวน',
+        //data: [12, 19, 3, 5, 10],
+        
+       //labels: ['ระดับความเสี่ยงน้อย','ระดับความเสี่ยงน้อย-ปานกลาง','ระดับความเสี่ยงปานกลาง','ระดับความเสี่ยงสูง','ระดับความเสี่ยงสูงมาก'],
+           // datasets: [{
+              //  label:'result',
+                data: [{% for number in bresult_number %} '{{ number }}', {% endfor %}],
+
+        borderWidth: 2
+
+
+        ,
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)',
+      'rgb(1, 100, 100)',
+      'rgb(120, 100, 86)',
+      'rgb(0, 0, 5)',
+      'rgb(150, 205, 86)',
+      'rgb(255, 100, 100)',
+      'rgb(120, 0, 86)',
+      'rgb(50, 0, 86)',      
+      'rgb(50, 50, 150)'
+    ],
+    hoverOffset: 4
+      }]
+    },
+    
+  });
+
+</script>
+
+
+
+<br><br>
+
+<h2 align="center"> กราฟแสดงความรอบรู้ขั้นพื้นฐานสำหรับกลุ่มเสี่ยงโรคเบาหวาน <br>(หลังได้รับความรู้) </h2>
+<div>
+  <canvas id="myChart3" width="100" height="100" style="border:1px solid #552211;" ></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.min.js"></script>
+
+<script>
+  var ctx = document.getElementById('myChart3').getContext('2d');
+  var myChart3 = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: [{% for list in aresult_list %} '{{ list }}', {% endfor %}],
+      //labels: ['ระดับความเสี่ยงน้อย','ระดับความเสี่ยงน้อย-ปานกลาง','ระดับความเสี่ยงปานกลาง','ระดับความเสี่ยงสูง','ระดับความเสี่ยงสูงมาก'],
+      datasets: [{
+        label: 'จำนวน',
+        //data: [12, 19, 3, 5, 10],
+        
+       //labels: ['ระดับความเสี่ยงน้อย','ระดับความเสี่ยงน้อย-ปานกลาง','ระดับความเสี่ยงปานกลาง','ระดับความเสี่ยงสูง','ระดับความเสี่ยงสูงมาก'],
+           // datasets: [{
+              //  label:'result',
+                data: [{% for number in aresult_number %} '{{ number }}', {% endfor %}],
+
+        borderWidth: 2
+
+
+        ,
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)',
+      'rgb(1, 100, 100)',
+      'rgb(120, 100, 86)',
+      'rgb(0, 0, 5)',
+      'rgb(150, 205, 86)',
+      'rgb(255, 100, 100)',
+      'rgb(120, 0, 86)',
+      'rgb(50, 0, 86)',      
+      'rgb(50, 50, 150)'
+    ],
+    hoverOffset: 4
+      }]
+    },
+    
+  });
+
+</script>
+
+
+
+
+
+<br><br>
+
+<h2 align="center"> กราฟแสดงความพึงพอใจ </h2> 
+<br>
+<h2 align="center"> เฉลี่ยรวมทั้งหมด {{average_s}}</h2> 
+<br>
+<h2 align="center"> ข้อ 1. การออกแบบหน้าจอเว็บแอปพลิเคชัน สามารถใช้งานได้ง่าย <br>เฉลี่ย {{rs1}} </h2> 
+<div>
+  <canvas id="myChart4" width="100" height="100" style="border:1px solid #552211;" ></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.min.js"></script>
+
+<script>
+  var ctx = document.getElementById('myChart4').getContext('2d');
+  var myChart4 = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: [{% for list in sresult_list %} '{{ list }}', {% endfor %}],
+      //labels: ['ระดับความเสี่ยงน้อย','ระดับความเสี่ยงน้อย-ปานกลาง','ระดับความเสี่ยงปานกลาง','ระดับความเสี่ยงสูง','ระดับความเสี่ยงสูงมาก'],
+      datasets: [{
+        label: 'จำนวน',
+        //data: [12, 19, 3, 5, 10],
+        
+       //labels: ['ระดับความเสี่ยงน้อย','ระดับความเสี่ยงน้อย-ปานกลาง','ระดับความเสี่ยงปานกลาง','ระดับความเสี่ยงสูง','ระดับความเสี่ยงสูงมาก'],
+           // datasets: [{
+              //  label:'result',
+                data: [{% for number in cr1 %} '{{ number }}', {% endfor %}],
+
+        borderWidth: 2
+
+
+        ,
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)',
+      'rgb(1, 100, 100)',
+      'rgb(120, 100, 86)',
+      'rgb(0, 0, 5)',
+      'rgb(150, 205, 86)',
+      'rgb(255, 100, 100)',
+      'rgb(120, 0, 86)',
+      'rgb(50, 0, 86)',      
+      'rgb(50, 50, 150)'
+    ],
+    hoverOffset: 4
+      }]
+    },
+    
+  });
+
+</script>
+
+
+
+
+<br>
+<br>
+<h2 align="center"> 2. ความสะดวกรวดเร็วในการใช้งานเว็บแอปพลิเคชัน <br>เฉลี่ย {{rs2}} </h2> 
+<div>
+  <canvas id="myChart5" width="100" height="100" style="border:1px solid #552211;" ></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.min.js"></script>
+
+<script>
+  var ctx = document.getElementById('myChart5').getContext('2d');
+  var myChart5 = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: [{% for list in sresult_list %} '{{ list }}', {% endfor %}],
+      //labels: ['ระดับความเสี่ยงน้อย','ระดับความเสี่ยงน้อย-ปานกลาง','ระดับความเสี่ยงปานกลาง','ระดับความเสี่ยงสูง','ระดับความเสี่ยงสูงมาก'],
+      datasets: [{
+        label: 'จำนวน',
+        //data: [12, 19, 3, 5, 10],
+        
+       //labels: ['ระดับความเสี่ยงน้อย','ระดับความเสี่ยงน้อย-ปานกลาง','ระดับความเสี่ยงปานกลาง','ระดับความเสี่ยงสูง','ระดับความเสี่ยงสูงมาก'],
+           // datasets: [{
+              //  label:'result',
+                data: [{% for number in cr2 %} '{{ number }}', {% endfor %}],
+
+        borderWidth: 2
+
+
+        ,
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)',
+      'rgb(1, 100, 100)',
+      'rgb(120, 100, 86)',
+      'rgb(0, 0, 5)',
+      'rgb(150, 205, 86)',
+      'rgb(255, 100, 100)',
+      'rgb(120, 0, 86)',
+      'rgb(50, 0, 86)',      
+      'rgb(50, 50, 150)'
+    ],
+    hoverOffset: 4
+      }]
+    },
+    
+  });
+
+</script>
+
+
+
+
+<br>
+<br>
+<h2 align="center">  3. ภาษาที่ใช้ในเว็บแอปพลิเคชัน สามารถเข้าใจได้ง่าย <br> เฉลี่ย {{rs3}} </h2> 
+<div>
+  <canvas id="myChart6" width="100" height="100" style="border:1px solid #552211;" ></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.min.js"></script>
+
+<script>
+  var ctx = document.getElementById('myChart6').getContext('2d');
+  var myChart6 = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: [{% for list in sresult_list %} '{{ list }}', {% endfor %}],
+      //labels: ['ระดับความเสี่ยงน้อย','ระดับความเสี่ยงน้อย-ปานกลาง','ระดับความเสี่ยงปานกลาง','ระดับความเสี่ยงสูง','ระดับความเสี่ยงสูงมาก'],
+      datasets: [{
+        label: 'จำนวน',
+        //data: [12, 19, 3, 5, 10],
+        
+       //labels: ['ระดับความเสี่ยงน้อย','ระดับความเสี่ยงน้อย-ปานกลาง','ระดับความเสี่ยงปานกลาง','ระดับความเสี่ยงสูง','ระดับความเสี่ยงสูงมาก'],
+           // datasets: [{
+              //  label:'result',
+                data: [{% for number in cr3 %} '{{ number }}', {% endfor %}],
+
+        borderWidth: 2
+
+
+        ,
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)',
+      'rgb(1, 100, 100)',
+      'rgb(120, 100, 86)',
+      'rgb(0, 0, 5)',
+      'rgb(150, 205, 86)',
+      'rgb(255, 100, 100)',
+      'rgb(120, 0, 86)',
+      'rgb(50, 0, 86)',      
+      'rgb(50, 50, 150)'
+    ],
+    hoverOffset: 4
+      }]
+    },
+    
+  });
+
+</script>
+
+
+
+
+
+<br>
+<br>
+<h2 align="center">  4. ความเหมาะสมและความสวยงามของเว็บแอปพลิเคชัน <br> เฉลี่ย {{rs4}} </h2> 
+<div>
+  <canvas id="myChart7" width="100" height="100" style="border:1px solid #552211;" ></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.min.js"></script>
+
+<script>
+  var ctx = document.getElementById('myChart7').getContext('2d');
+  var myChart7 = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: [{% for list in sresult_list %} '{{ list }}', {% endfor %}],
+      //labels: ['ระดับความเสี่ยงน้อย','ระดับความเสี่ยงน้อย-ปานกลาง','ระดับความเสี่ยงปานกลาง','ระดับความเสี่ยงสูง','ระดับความเสี่ยงสูงมาก'],
+      datasets: [{
+        label: 'จำนวน',
+        //data: [12, 19, 3, 5, 10],
+        
+       //labels: ['ระดับความเสี่ยงน้อย','ระดับความเสี่ยงน้อย-ปานกลาง','ระดับความเสี่ยงปานกลาง','ระดับความเสี่ยงสูง','ระดับความเสี่ยงสูงมาก'],
+           // datasets: [{
+              //  label:'result',
+                data: [{% for number in cr4 %} '{{ number }}', {% endfor %}],
+
+        borderWidth: 2
+
+
+        ,
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)',
+      'rgb(1, 100, 100)',
+      'rgb(120, 100, 86)',
+      'rgb(0, 0, 5)',
+      'rgb(150, 205, 86)',
+      'rgb(255, 100, 100)',
+      'rgb(120, 0, 86)',
+      'rgb(50, 0, 86)',      
+      'rgb(50, 50, 150)'
+    ],
+    hoverOffset: 4
+      }]
+    },
+    
+  });
+
+</script>
+
+
+
+
+<br>
+<br>
+<h2 align="center"> 5.ความพึงพอใจในภาพรวมต่อการใช้งานเว็บแอปพลิเคชัน <br> เฉลี่ย {{rs5}} </h2> 
+<div>
+  <canvas id="myChart8" width="100" height="100" style="border:1px solid #552211;" ></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.min.js"></script>
+
+<script>
+  var ctx = document.getElementById('myChart8').getContext('2d');
+  var myChart8 = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+      labels: [{% for list in sresult_list %} '{{ list }}', {% endfor %}],
+      //labels: ['ระดับความเสี่ยงน้อย','ระดับความเสี่ยงน้อย-ปานกลาง','ระดับความเสี่ยงปานกลาง','ระดับความเสี่ยงสูง','ระดับความเสี่ยงสูงมาก'],
+      datasets: [{
+        label: 'จำนวน',
+        //data: [12, 19, 3, 5, 10],
+        
+       //labels: ['ระดับความเสี่ยงน้อย','ระดับความเสี่ยงน้อย-ปานกลาง','ระดับความเสี่ยงปานกลาง','ระดับความเสี่ยงสูง','ระดับความเสี่ยงสูงมาก'],
+           // datasets: [{
+              //  label:'result',
+                data: [{% for number in cr5 %} '{{ number }}', {% endfor %}],
+
+        borderWidth: 2
+
+
+        ,
+    backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)',
+      'rgb(1, 100, 100)',
+      'rgb(120, 100, 86)',
+      'rgb(0, 0, 5)',
+      'rgb(150, 205, 86)',
+      'rgb(255, 100, 100)',
+      'rgb(120, 0, 86)',
+      'rgb(50, 0, 86)',      
+      'rgb(50, 50, 150)'
+    ],
+    hoverOffset: 4
+      }]
+    },
+    
+  });
+
+</script>
+
+
+    {% endblock content %}
+
+
+

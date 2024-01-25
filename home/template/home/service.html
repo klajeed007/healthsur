@@ -1,0 +1,132 @@
+ {% extends 'home/base.html' %}
+ {% load static %}
+
+    {% block content %}
+    {% if status %} 
+        {% if status == 'success' %} 
+            <h2>ผลความเสี่ยงของคุณคือ </h2><h1 style="color:seagreen;">{{result}}</h1>
+            {% if result == 'ระดับความเสี่ยงน้อย (0-5%)' %}
+              <h1 style="color:seagreen;">ให้ประเมินซ้ำทุก 1 ปี</h1><br>
+            {% else %}
+              <h2 style="color:orangered;"><u>คำแนะนำในการปฏิบัติตัวเพื่อป้องกันโรคเบาหวาน</u></h2>
+              <p class="fs-3 text-body-secondary">
+              1. การลดน้ำหนัก<br>
+การลดน้ำหนักอย่างน้อยร้อยละ 5-7 ขึ้นไป ใน 6 เดือน หรือประมาณ 1 กิโลกรัมต่อสัปดาห์ สามารถป้องกันการเกิดโรคเบาหวานได้และเน้นการบริโภคอาหารที่มีพลังงานต่ํา ได้แก่ ผัก ผลไม้<br><br>
+2. การควบคุมอาหาร<br>
+การรับประทานอาหารในปริมาณที่เหมาะสม ได้แก่ การบริโภคธัญพืชไม่ขัดสี ผัก อาหารที่มีใยอาหารมาก ถั่ว ชา กาแฟ ผลิตภัณฑ์นมจากสัตว์  การบริโภคผลไม้กลุ่มเบอร์รี่ การบริโภคผลิตภัณฑ์โยเกิร์ต ดื่มน้ำเปล่า หลีกเลี่ยงอาหารจําพวกเนื้อสัตว์แปรรูป เบคอน เนื้อแดง รวมถึงเครื่องดื่มที่มีน้ำตาล<br><br>
+3. การออกกำลังกาย<br>
+ การเพิ่มกิจกรรมทางกายและการออกกําลังกาย การมีกิจกรรมทางกายโดยอย่างน้อยมีความหนักระดับปานกลางขึ้นไป และมีระยะเวลาเกิน 150 นาทีต่อสัปดาห์ แนะนําให้ออกกำลังกายวันละ 30-50 นาที อย่างน้อย 3-5 วันต่อสัปดาห์ การทําแต่ละครั้งควรไม่น้อยกว่า 10 นาที ไม่ควรหยุดติดต่อกันเกิน 2 วัน และแนะนำการออกกําลังกายแบบแรงต้านร่วมด้วย และการออกกําลังกายเน้นความสมดุลของกล้ามเนื้อด้วย
+ <br><h6>"อ้างอิง CPG DM Thai 2566"</h6>
+ <br>
+ <h2 style="color:seagreen;" ><h2 style="color:seagreen;" ><a href="https://lin.ee/YEceM4D">รับความรู้และติดตามการปรับเปลี่ยนพฤติกรรมได้ที่นี่</a></h2>
+</p>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+
+<p class="fs-5 text-body-secondary">แบบประเมินความเสี่ยงการเกิดโรคเบาหวาน<br> </p>
+  
+  
+    <div class="container">
+
+        <form method="POST">
+
+          {% csrf_token %}
+
+          <div class="form-group">
+<br>
+            <label for="name" > ชื่อ - นามสกุล     </label>
+            <input type="text" name="uname" id="uname" required> </input><br>
+<br>
+
+            <label for="age" > 1. อายุ </label>
+          
+            <select class="form-select" name="age" id="age" required>
+              <option disabled="true" value="" selected >--กรุณาเลือกคำตอบ--</option>
+              <option value =1>ตำกว่า 35 ปี</option>
+              <option value =1>35 ถึง 45 ปี</option>
+              <option value =2>45 ถึง 49 ปี</option>
+              <option value =3>50 ถึง 59 ปี</option>
+              <option value =4>ตั้งแต่ 60 ปีขึ้นไป</option>
+            </select>
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <label for="bmi"> 2. ดัชนีมวลกาย (BMI) </label>
+          
+            <select class="form-select" name="bmi" id="bmi" required>
+              <option disabled="true" value="" selected >--กรุณาเลือกคำตอบ--</option>
+              <option value =0>ต่ำกว่า 23 กก./ตร.ม </option>
+              <option value =1>23 กก./ตรม - 27.49 กก./ตรม</option>
+              <option value =3>ตั้งแต่ 27.5กก./ตร.ม ขึ้นไป</option>
+            </select>
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <label for="wtoh"> 3. รอบเอวต่อความสูง </label>
+          
+            <select class="form-select" name="wtoh" id="wtoh" required>
+              <option disabled="true" value="" selected >--กรุณาเลือกคำตอบ--</option>
+              <option value=0>ต่ำกว่าหรือเท่ากับ 0.5</option>
+              <option value=3>มากกว่า 0.5 ถึง 0.6</option>
+              <option value=5>ตั้งแต่ 0.6 ขึ้นไป</option>
+            </select>
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <label for="ht"> 4. ความดันโลหิตสูง </label>
+          
+            <select class="form-select" name="ht" id="ht" required>
+             <option disabled="true" value="" selected >--กรุณาเลือกคำตอบ--</option>
+              <option value =0>ไม่มี</option>
+              <option value =2>เป็น (ระหว่าง 120/90 ถึง 140/90)</option>
+              <option value =4>เป็น (ตั้งแต่ 140/90 ขึ้นไป)</option>
+            </select>
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <label for="pardimen"> 5. ประวัติโรคเบาหวานในญาติสายตรง (พ่อ แม่ พี่ หรือน้อง) </label>
+          
+            <select class="form-select"  name="pardimen" id="pardimen" required>
+              <option disabled="true" selected value="" >--กรุณาเลือกคำตอบ--</option>
+              <option value =0>ไม่มี</option>
+              <option value =2>มี</option>
+            </select>
+          </div>
+
+          <br>
+
+          <div class="form-group">
+            <label for="fpg"> 6. น้ำตาลในเลือดหลังอดอาหาร </label>
+          
+            <select class="form-select" value="" name="fpg" id="fpg">
+              <option disabled="true" selected >--กรุณาเลือกคำตอบ--</option>
+              <option value =0>ไม่มีค่าน้ำตาล</option>
+              <option value =0>น้อยกว่า 100 มก./ดล.</option>
+              <option value =5>ระหว่าง 100 ถึง 125 มก./ดล.</option>
+            </select>
+          </div>
+
+          <br>
+          <script src="{% static 'myfirst2.js' %}"></script>
+
+          <button type="submit" class="btn btn-bd-primary" onclick="myFunction()">ส่งแบบประเมิน</button>
+        </form>
+ <br> <br> 
+<h6>สมาคมโรคเบาหวานแห่งประเทศไทย ในพระราชูปถัมภ์สมเด็จพระเทพรัตนราชสุดา ฯ สยามบรมราชกุมารี.
+<br>
+(2566). แนวทางเวชปฏิบัติโรคเบาหวาน 2566 (พิมพ์ครั้งที่ 1). บริษัท ศรีเมืองการพิมพ์ จำกัด.</h6>
+
+    </div>
+
+    {% endblock content %}
+
+
